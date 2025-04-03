@@ -1,27 +1,37 @@
-import { Component,AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements AfterViewInit {
-  ngAfterViewInit() {
-    this.loadScript('../../../assets/assets/lib/wow/wow.min.js');
-    this.loadScript('../../../assets/assets/lib/easing/easing.min.js');
-    this.loadScript('../../../assets/assets/lib/waypoints/waypoints.min.js');
-    this.loadScript('../../../assets/assets/lib/counterup/counterup.min.js');
-    this.loadScript('../../../assets/assets/lib/owlcarousel/owl.carousel.min.js');
+  private scripts: string[] = [
+    '../../../assets/assets/lib/wow/wow.min.js',
+    '../../../assets/assets/lib/easing/easing.min.js',
+    '../../../assets/assets/lib/waypoints/waypoints.min.js',
+    '../../../assets/assets/lib/counterup/counterup.min.js',
+    '../../../assets/assets/lib/owlcarousel/owl.carousel.min.js',
+    '../../../assets/assets/js/main.js'
+  ];
 
-    this.loadScript('../../../assets/assets/js/main.js');
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private renderer: Renderer2
+  ) {}
+
+  ngAfterViewInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.scripts.forEach(script => this.loadScript(script));
+    }
   }
 
-  loadScript(scriptUrl: string) {
-    const script = document.createElement('script');
+  private loadScript(scriptUrl: string) {
+    const script = this.renderer.createElement('script');
     script.src = scriptUrl;
     script.type = 'text/javascript';
     script.async = true;
-    document.body.appendChild(script);
+    this.renderer.appendChild(document.body, script);
   }
 }
