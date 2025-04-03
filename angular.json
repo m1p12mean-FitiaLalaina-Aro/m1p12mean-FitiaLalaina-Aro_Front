@@ -35,7 +35,9 @@
               "src/styles.scss",
               "src/assets/plugins/bootstrap/bootstrap.min.css",
               "src/assets/assets/css/style.css",
-              "src/assets/assets/css/bootstrap.min.css"
+              "src/assets/assets/css/bootstrap.min.css",
+              "src/lib/animate/animate.min.css",
+              "lib/owlcarousel/assets/owl.carousel.min.css"
             ],
             "scripts": [
               "src/assets/plugins/jquery/jquery.min.js",
