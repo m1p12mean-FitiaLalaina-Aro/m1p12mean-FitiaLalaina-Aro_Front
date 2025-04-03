@@ -1,5 +1,5 @@
 {
-  "name": "fasyl-frontend",
+  "name": "mada-garage-car",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:Fasyl_frontend": "node dist/fasyl-frontend/server/server.mjs"
+    "serve:ssr:mada_garage_car": "node dist/mada-garage-car/server/server.mjs"
   },
   "private": true,
   "dependencies": {
