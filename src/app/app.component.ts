@@ -10,5 +10,5 @@ import { FooterComponent } from "./layout/footer/footer.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Fasyl_frontend';
+  title = 'mada_garage_car';
 }
